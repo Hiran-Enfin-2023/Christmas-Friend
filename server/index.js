@@ -23,10 +23,13 @@ mongoose
 app.post("/assignFriend", async (req, res) => {
   const { email } = req.body;
 
+  if(email === ""){
+    return res.status(400).json({ error: "Please enter email" });
+  }
   // Check if the user already has an assigned friend
   const existingEmployee = await FriendsModel.findOne({ email });
   if (!existingEmployee) {
-    return res.status(400).json({ errors: "Please enter valid email address" });
+    return res.status(400).json({ error: "Please enter valid email address" });
   }
   if (existingEmployee.assignedFriend) {
     return res.status(400).json({

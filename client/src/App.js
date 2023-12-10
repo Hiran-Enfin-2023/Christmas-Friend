@@ -1,17 +1,18 @@
-import React from 'react'
-import { Routes, Route } from "react-router-dom"
-import Form from './Components/Form'
-import ChristmasFrd from './Components/ChristmasFrd'
-function App() {
-  console.log("Hello World");
-  return (
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Register from "./Components/Register/Register";
+import Home from "./Components/Home/Home";
 
+function App() {
+
+  return (
+    <div>
       <Routes>
-        <Route path='/' element={<ChristmasFrd />} />
-        <Route path="/add" element={<Form />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/add" element={<Register />} />
       </Routes>
-  
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
