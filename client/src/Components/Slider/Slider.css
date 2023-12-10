@@ -1,0 +1,47 @@
+.slider-div {
+    width: 100%;
+    background-color: #777777;
+    /* min-height: 400px; */
+    margin-top: 120px;
+  }
+  .slider-div > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .input-field {
+      max-width: 80%;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      margin: 10px;
+    }
+    .input-field > input {
+      flex: 1;
+      padding: 15px;
+      height: 65px;
+      border-radius: 20px;
+      border: 1px black;
+      /* background-color: red; */
+      width: 100%;
+      /* outline: none; */
+    }
+    .input-field button {
+      width: 95%;
+      justify-content: center;
+      text-align: center;
+      border-radius: 5px;
+      background: url(https://tse3.mm.bing.net/th?id=OIP.NNFnSG8mkcTRZnzJ0GQp_QHaEK&pid=Api&P=0);
+      border: 2px solid #ac0000;
+      height: 50px;
+    }
+    .title-box h2 {
+      font-size: 38px;
+    }
+    .about-main-info h2 {
+      font-size: 24px;
+  }
+  }
+  

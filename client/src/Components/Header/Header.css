@@ -1,0 +1,72 @@
+.header-main {
+    height: 120px;
+    background-color: rgb(247, 247, 247);
+    /* position: absolute; */
+    top: 0px;
+    left: 0px;
+    width: 99vw;
+    margin: 0 auto;
+    z-index: 20;
+    position: fixed;
+  }
+
+  #container {
+    /* background-color: blue; */
+    display: flex;
+  }
+  #navbar {
+    background-color: rgb(245, 245, 245);
+    height: 100%;
+    box-shadow: 0px 3px 6px 3px rgba(0, 0, 0, 0.06);
+  }
+
+
+  #navbar-nav #link:hover {
+    background: #e91327;
+      color: #ffffff;
+      border-radius: 0 15px;
+  }
+  
+  #logo {
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  @media (max-width: 768px) {
+    .input-field {
+      max-width: 80%;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      margin: 10px;
+    }
+    #logo {
+      width: 220px
+    }
+    .input-field > input {
+      flex: 1;
+      padding: 15px;
+      height: 65px;
+      border-radius: 20px;
+      border: 1px black;
+      /* background-color: red; */
+      width: 100%;
+      /* outline: none; */
+    }
+    .input-field button {
+      width: 95%;
+      justify-content: center;
+      text-align: center;
+      border-radius: 5px;
+      background: url(https://tse3.mm.bing.net/th?id=OIP.NNFnSG8mkcTRZnzJ0GQp_QHaEK&pid=Api&P=0);
+      border: 2px solid #ac0000;
+      height: 50px;
+    }
+    .title-box h2 {
+      font-size: 38px;
+    }
+    .about-main-info h2 {
+      font-size: 24px;
+  }
+  }
+  
