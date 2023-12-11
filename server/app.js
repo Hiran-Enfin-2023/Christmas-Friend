@@ -12,8 +12,7 @@ app.use(bodyParser.json());
 // MongoDB connection
 mongoose
   .connect(
-    process.env.MONGODB_URL
-  )
+    "mongodb+srv://hiranraj:Hiran2001@cluster0.6pnihvs.mongodb.net/ChristmasFriend?retryWrites=true&w=majority"  )
   .then(() => {
     console.log("Connected ot mongodb successfully");
   })
