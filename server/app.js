@@ -3,17 +3,16 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const FriendsModel = require("./model/FriendsModel");
-
+require("dotenv").config()
 const app = express();
-const PORT = 5000;
-
+const PORT =  process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
 mongoose
   .connect(
-    "mongodb+srv://hiranraj:Hiran2001@cluster0.6pnihvs.mongodb.net/ChristmasFriend?retryWrites=true&w=majority"
+    process.env.MONGODB_URL
   )
   .then(() => {
     console.log("Connected ot mongodb successfully");
@@ -46,9 +45,8 @@ app.post("/assignFriend", async (req, res) => {
     isAssigned: false,
   });
 
-  console.log(availableFriends);
+  // console.log(availableFriends);
 
-  console.log("length" + " " + availableFriends.length);
 
 
   if (availableFriends.length === 0) {
@@ -59,7 +57,7 @@ app.post("/assignFriend", async (req, res) => {
 
   const selectedFriend = availableFriends[randomIndex];
 
-  console.log(selectedFriend);
+  // console.log(selectedFriend);
 
   
   // // Assign the friend to the user
