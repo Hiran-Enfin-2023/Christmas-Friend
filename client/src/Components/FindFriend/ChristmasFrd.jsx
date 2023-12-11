@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./ChristmasFrd.css"
+import { API_URL } from "../../utils";
 function ChristmasFrd() {
   const [email, setEmail] = useState("");
   const [friend, setFriend] = useState("");
@@ -12,7 +13,7 @@ function ChristmasFrd() {
   const handleAssignFriend = async () => {
     try {
        
-      const response = await fetch("http://localhost:5000/assignFriend", {
+      const response = await fetch("https://no65cxoxe6ecgz7nq4h55gdjgm0ustqq.lambda-url.ap-south-1.on.aws/assignFriend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

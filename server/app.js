@@ -18,7 +18,10 @@ mongoose
     console.log("Connected ot mongodb successfully");
   })
   .catch((err) => console.log(err));
-
+app.get("/",(req,res)=>{
+  res.send("success")
+  console.log("Sucess");
+})
 app.post("/assignFriend", async (req, res) => {
   const { email } = req.body;
 
