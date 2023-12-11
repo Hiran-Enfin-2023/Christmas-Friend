@@ -19,7 +19,7 @@ function Register() {
 
   const handleAddEmployee = async () => {
     try {
-      const response = await fetch("http://localhost:5000/addEmployee", {
+      const response = await fetch("https://christmas-friend-api.vercel.app/addEmployee", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

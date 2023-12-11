@@ -13,7 +13,7 @@ function ChristmasFrd() {
   const handleAssignFriend = async () => {
     try {
        
-      const response = await fetch("https://no65cxoxe6ecgz7nq4h55gdjgm0ustqq.lambda-url.ap-south-1.on.aws/assignFriend", {
+      const response = await fetch("https://christmas-friend-api.vercel.app/assignFriend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
