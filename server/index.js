@@ -8,7 +8,7 @@ const app = express();
 const PORT =  process.env.PORT || 5000;
 app.use(cors(
   {
-    origin : ["https://christmas-friend-ui.vercel.app/"],
+    origin : ["https://enfin-christmas.vercel.app"],
     methods : ["GET", "POST"],
     credentials : true,
   }
