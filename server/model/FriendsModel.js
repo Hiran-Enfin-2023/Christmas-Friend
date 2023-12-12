@@ -7,7 +7,7 @@ const friendsSchema = mongoose.Schema({
   friendName: String,
   isAssigned: { type : Boolean, default: false },
   iamFriendOf : String,
-  
+  isVisited: { type : Boolean, default: false },
 })
 
 module.exports = mongoose.model("friends", friendsSchema)

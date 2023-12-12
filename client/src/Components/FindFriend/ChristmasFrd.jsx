@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import "./ChristmasFrd.css"
 import { API_URL } from "../../utils";
+import { DotLoader } from "react-spinners"
 function ChristmasFrd() {
   const [email, setEmail] = useState("");
   const [friend, setFriend] = useState("");
   const [error, setError] = useState("");
-  const [isLoading,setIsLoading] = useState()
+  const [isLoading, setIsLoading] = useState()
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handleAssignFriend = async () => {
     try {
-       
+      setIsLoading(true)
       const response = await fetch("https://christmas-friend-api.vercel.app/assignFriend", {
         method: "POST",
         headers: {
@@ -27,12 +28,13 @@ function ChristmasFrd() {
         console.log(errorData);
         setError(errorData.error);
         setFriend("");
-        
+
       } else {
         const data = await response.json();
         setError("");
-        setFriend(data.friend);
+        setFriend(`Your Christmas Friend: ${data.friend}`);
         console.log(data);
+        setIsLoading(false)
       }
     } catch (error) {
       console.error("Error assigning friend:", error);
@@ -46,7 +48,7 @@ function ChristmasFrd() {
       <div className="title-box">
         <h2>Christmas Friend</h2>
       </div>
-      <div className="input-field">
+      <div  className="input-field">
         <input
           type="email"
           value={email}
@@ -56,7 +58,8 @@ function ChristmasFrd() {
         <button onClick={handleAssignFriend}>Enter</button>
       </div>
 
-      {friend && <p>Your Christmas Friend: {friend}</p>}
+      {!friend && isLoading === true ? <div style={{marginTop:"10px"}}> <DotLoader color="#f50505" /></div> : <div style={{marginTop:"15px"}}><h4>{friend}</h4></div>  
+        }
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );

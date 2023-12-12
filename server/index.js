@@ -6,6 +6,8 @@ const FriendsModel = require("./model/FriendsModel");
 require("dotenv").config()
 const app = express();
 const PORT =  process.env.PORT || 5000;
+const {fork} = require("child_process");
+const { sendEmail } = require("./utils/Mail");
 // app.use(cors(
 //   {
 //     origin : ["https://enfin-christmas.vercel.app"],
@@ -35,17 +37,19 @@ let availableFriends
   if(email === ""){
     return res.status(400).json({ error: "Please enter email" });
   }
+
+
   // Check if the user already has an assigned friend
   const existingEmployee = await FriendsModel.findOne({ email });
   if (!existingEmployee) {
     return res.status(400).json({ error: "Please enter valid email address" });
   }
-  if (existingEmployee.assignedFriend) {
+ 
+  if (existingEmployee.assignedFriend || existingEmployee.isVisited) {
     return res.status(400).json({
       error:
-        "You already have an assigned friend" +
-        " - " +
-        existingEmployee.friendName,
+        "You have selected a friend please check your mail" 
+       
     });
   }
 
@@ -92,6 +96,7 @@ let availableFriends
       $set: {
         assignedFriend: selectedFriend.email,
         friendName: selectedFriend.name,
+        isVisited : true,
       },
     }
   );
@@ -105,6 +110,8 @@ let availableFriends
     }
   )
 
+    sendEmail({ selectedFriend , email})
+    
   res.json({ friend: selectedFriend.name });
 });
 
