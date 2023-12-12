@@ -47,9 +47,14 @@ app.post("/assignFriend", async (req, res) => {
     });
   }
 
+ 
+  const {iamFriendOf} = existingEmployee
   // Get a random available friend
   const availableFriends = await FriendsModel.find({
-    email: { $ne: email },
+    $and: [
+      {email: {$ne : email}},
+      {email: {$ne : iamFriendOf}}
+    ],
     isAssigned: false,
   });
 
@@ -82,7 +87,8 @@ app.post("/assignFriend", async (req, res) => {
     {email: selectedFriend.email},
     {
       $set: {
-        isAssigned: true
+        isAssigned: true,
+        iamFriendOf : email
       },
     }
   )
