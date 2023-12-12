@@ -5,7 +5,7 @@ function ChristmasFrd() {
   const [email, setEmail] = useState("");
   const [friend, setFriend] = useState("");
   const [error, setError] = useState("");
-
+  const [isLoading,setIsLoading] = useState()
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };

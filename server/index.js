@@ -29,7 +29,7 @@ app.get("/",(req,res)=>{
 })
 app.post("/assignFriend", async (req, res) => {
   const { email } = req.body;
-
+let availableFriends
   if(email === ""){
     return res.status(400).json({ error: "Please enter email" });
   }
@@ -50,13 +50,23 @@ app.post("/assignFriend", async (req, res) => {
  
   const {iamFriendOf} = existingEmployee
   // Get a random available friend
-  const availableFriends = await FriendsModel.find({
-    $and: [
-      {email: {$ne : email}},
-      {email: {$ne : iamFriendOf}}
-    ],
-    isAssigned: false,
-  });
+  if(iamFriendOf){
+    console.log(iamFriendOf, "is assigned");
+     availableFriends = await FriendsModel.find({
+      $and: [
+        {email: {$ne : email}},
+        {email: {$ne : iamFriendOf}}
+      ],
+      isAssigned: false,
+    });
+  }else{
+    console.log("no one is assigned");
+    availableFriends = await FriendsModel.find({
+     email : {$ne : email},
+      isAssigned: false,
+    });
+  }
+ 
 
   // console.log(availableFriends);
 
