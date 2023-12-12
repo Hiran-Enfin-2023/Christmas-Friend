@@ -16,9 +16,9 @@ function Header() {
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav id="navbar-nav" className="me-auto">
-              <Nav.Link   id="link" >Home</Nav.Link>
+              {/* <Nav.Link   id="link" >Home</Nav.Link>
               <Nav.Link  id="link" >Wish</Nav.Link>
-              <Nav.Link   id="link" >Christmas Friend</Nav.Link>
+              <Nav.Link   id="link" >Christmas Friend</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
