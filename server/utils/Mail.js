@@ -36,7 +36,7 @@ exports.sendEmail = async ({ selectedFriend, email }) => {
 
     console.log("Main.js line on 7" ,selectedFriend);
   console.log("mail to send" , email);
-  const message = `Your Christmas Friend is . ${selectedFriend.name}.`;
+  const message = `Your Christmas Friend is - ${selectedFriend.name}.`;
 
   const transporter = nodemailer.createTransport({
     // Configure your email service here

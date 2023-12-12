@@ -28,7 +28,7 @@ function ChristmasFrd() {
         console.log(errorData);
         setError(errorData.error);
         setFriend("");
-
+setIsLoading(false)
       } else {
         const data = await response.json();
         setError("");

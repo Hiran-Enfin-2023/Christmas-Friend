@@ -48,7 +48,7 @@ let availableFriends
   if (existingEmployee.assignedFriend || existingEmployee.isVisited) {
     return res.status(400).json({
       error:
-        "You have selected a friend please check your mail" 
+        "You have already selected a friend please check your email." 
        
     });
   }
@@ -111,7 +111,7 @@ let availableFriends
   )
 
     sendEmail({ selectedFriend , email})
-    
+
   res.json({ friend: selectedFriend.name });
 });
 
