@@ -6,15 +6,22 @@ const FriendsModel = require("./model/FriendsModel");
 require("dotenv").config()
 const app = express();
 const PORT =  process.env.PORT || 5000;
-app.use(cors(
-  {
-    origin : ["https://enfin-christmas.vercel.app"],
-    methods : ["GET", "POST"],
-    credentials : true,
-  }
-));
-app.use(bodyParser.json());
+// app.use(cors(
+//   {
+//     origin : ["https://enfin-christmas.vercel.app"],
+//     methods : ["GET", "POST"],
+//     credentials : true,
+//   }
+// ));
 
+app.use(cors())
+app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://enfin-christmas.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 // MongoDB connection
 mongoose
   .connect(
@@ -51,7 +58,7 @@ let availableFriends
   const {iamFriendOf} = existingEmployee
   // Get a random available friend
   if(iamFriendOf){
-    console.log(iamFriendOf, "is assigned");
+    // console.log(iamFriendOf, "is assigned");
      availableFriends = await FriendsModel.find({
       $and: [
         {email: {$ne : email}},
@@ -60,7 +67,7 @@ let availableFriends
       isAssigned: false,
     });
   }else{
-    console.log("no one is assigned");
+    // console.log("no one is assigned");
     availableFriends = await FriendsModel.find({
      email : {$ne : email},
       isAssigned: false,
