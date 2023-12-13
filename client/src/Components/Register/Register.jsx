@@ -5,6 +5,8 @@ function Register() {
   const [error, setError] = useState("");
   const [newEmployeeName, setNewEmployeeName] = useState("");
   const [newEmployeeEmail, setNewEmployeeEmail] = useState("");
+  const [newEmployeePass, setNewEmployeePass] = useState("");
+
 
 
 
@@ -17,6 +19,10 @@ function Register() {
     setNewEmployeeEmail(e.target.value);
   };
 
+  const handleNewEmployeePasswordChange = (e) => {
+    setNewEmployeePass(e.target.value);
+  };
+
   const handleAddEmployee = async () => {
     try {
       const response = await fetch("https://christmas-friend-api.vercel.app/addEmployee", {
@@ -27,6 +33,7 @@ function Register() {
         body: JSON.stringify({
           name: newEmployeeName,
           email: newEmployeeEmail,
+          password: newEmployeePass
         }),
       });
 
@@ -40,6 +47,7 @@ function Register() {
       
         setNewEmployeeEmail("");
         setNewEmployeeName("");
+        setNewEmployeePass("")
 
         // You can handle success messages better
       }
@@ -103,6 +111,29 @@ function Register() {
             type="email"
             value={newEmployeeEmail}
             onChange={handleNewEmployeeEmailChange}
+            style={{
+              width: "100%",
+              padding: "10px",
+              fontSize: "14px",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
+              boxSizing: "border-box",
+            }}
+          />
+        </label>
+        <label
+          style={{
+            display: "block",
+            marginBottom: "5px",
+            fontSize: "16px",
+            color: "#333",
+          }}
+        >
+          Password:
+          <input
+            type="password"
+            value={newEmployeePass}
+            onChange={handleNewEmployeePasswordChange}
             style={{
               width: "100%",
               padding: "10px",

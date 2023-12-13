@@ -4,11 +4,15 @@ import { API_URL } from "../../utils";
 import { DotLoader } from "react-spinners"
 function ChristmasFrd() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState()
   const [friend, setFriend] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState()
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleAssignFriend = async () => {
@@ -19,7 +23,7 @@ function ChristmasFrd() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email , password}),
       });
 
       if (!response.ok) {
@@ -28,7 +32,7 @@ function ChristmasFrd() {
         console.log(errorData);
         setError(errorData.error);
         setFriend("");
-setIsLoading(false)
+        setIsLoading(false)
       } else {
         const data = await response.json();
         setError("");
@@ -48,18 +52,28 @@ setIsLoading(false)
       <div className="title-box">
         <h2>Christmas Friend</h2>
       </div>
-      <div  className="input-field">
+      <div className="input-field">
         <input
           type="email"
           value={email}
           placeholder="Company Email"
           onChange={handleEmailChange}
+          style={{margin:"5px",   borderRadius: "50px",
+          backgroundColor:"#F0F0F0"}}
+        />
+        {/* <div style={{height:"1px", width:"100%", backgroundColor:"black"}}></div> */}
+         <input
+          type="password"
+          value={password}
+          placeholder="Enter your password"
+          onChange={handlePasswordChange}
+          style={{margin:"5px",  borderRadius: "50px", backgroundColor:"#F0F0F0"}}
         />
         <button onClick={handleAssignFriend}>Enter</button>
       </div>
 
-      {!friend && isLoading === true ? <div style={{marginTop:"10px"}}> <DotLoader color="#f50505" /></div> : <div style={{marginTop:"15px"}}><h4>{friend}</h4></div>  
-        }
+      {!friend && isLoading === true ? <div style={{ marginTop: "10px" }}> <DotLoader color="#f50505" /></div> : <div style={{ marginTop: "15px" }}><h4>{friend}</h4></div>
+      }
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
