@@ -69,7 +69,7 @@ function ChristmasFrd() {
           onChange={handlePasswordChange}
           style={{margin:"5px",  borderRadius: "50px", backgroundColor:"#F0F0F0"}}
         />
-        <button onClick={handleAssignFriend}>Enter</button>
+        <button style={{margin:"5px"}} onClick={handleAssignFriend}>Enter</button>
       </div>
 
       {!friend && isLoading === true ? <div style={{ marginTop: "10px" }}> <DotLoader color="#f50505" /></div> : <div style={{ marginTop: "15px" }}><h4>{friend}</h4></div>
