@@ -40,6 +40,7 @@ function Register() {
       if (!response.ok) {
         const errorData = await response.json();
         setError(errorData.error);
+        console.log(errorData);
       } else {
         const data = await response.json();
         setError("");
