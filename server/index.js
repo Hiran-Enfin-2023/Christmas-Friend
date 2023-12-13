@@ -45,11 +45,11 @@ app.post("/assignFriend", async (req, res) => {
   if (!existingEmployee) {
     return res.status(400).json({ error: "Please enter valid email address" });
   }
-  const isPasswordValid = await bcyrpt.compare(
-    req.body.password,
-    existingEmployee.password
-  );
-  if (isPasswordValid) {
+  // const isPasswordValid = await bcyrpt.compare(
+  //   req.body.password,
+  //   existingEmployee.password
+  // );
+  if (existingEmployee.password === req.body.password) {
     if (existingEmployee.assignedFriend || existingEmployee.isVisited) {
       return res.status(400).json({
         error: "You have already selected your friend" + " " +  existingEmployee.friendName,
@@ -126,13 +126,13 @@ app.post("/addEmployee", async (req, res) => {
         .status(400)
         .json({ error: "Employee with this email already exists." });
     } else {
-      const salt = bcyrpt.genSaltSync(12);
-      const passwordHashed = bcyrpt.hashSync(req.body.password, salt);
+      // const salt = bcyrpt.genSaltSync(12);
+      // const passwordHashed = bcyrpt.hashSync(req.body.password, salt);
       //   // Create a new employee
       const newEmployee = new FriendsModel({
         name,
         email,
-        password: passwordHashed,
+        password: password,
       });
       await newEmployee.save();
     }
