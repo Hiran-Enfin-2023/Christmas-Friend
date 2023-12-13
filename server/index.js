@@ -132,7 +132,7 @@ app.post("/addEmployee", async (req, res) => {
       const newEmployee = new FriendsModel({
         name,
         email,
-        password: password,
+        password: password+"@2023",
       });
       await newEmployee.save();
     }
