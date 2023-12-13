@@ -72,7 +72,7 @@ function ChristmasFrd() {
         <button style={{margin:"5px"}} onClick={handleAssignFriend}>Enter</button>
       </div>
 
-      {!friend && isLoading === true ? <div style={{ marginTop: "10px" }}> <DotLoader color="#f50505" /></div> : <div style={{ marginTop: "15px" }}><h4>{friend}</h4></div>
+      {!friend && isLoading === true ? <div style={{ marginTop: "20px" }}> <DotLoader color="#f50505" /></div> : <div style={{ marginTop: "20px" }}><h4>{friend}</h4></div>
       }
       {error && <p style={{ color: "red" }}>{error}</p>}
     </div>

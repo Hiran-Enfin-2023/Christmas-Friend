@@ -52,7 +52,7 @@ app.post("/assignFriend", async (req, res) => {
   if (isPasswordValid) {
     if (existingEmployee.assignedFriend || existingEmployee.isVisited) {
       return res.status(400).json({
-        error: "You have already selected your friend" + existingEmployee.friendName,
+        error: "You have already selected your friend" + " " +  existingEmployee.friendName,
       });
     }
     const { iamFriendOf } = existingEmployee;
